@@ -13,12 +13,27 @@
 </template>
 
 <script>
-import { loadAnimes } from "../views/firebase";
+// import { loadAnimes } from "../views/firebase";
+import {ref} from 'vue';
+import axios from 'axios'
 import AnimeCard from "../components/AnimeCard.vue";
 
 export default {
   setup() {
-    const animes = loadAnimes();
+    const animes = ref(null)
+
+    const fetchAnimes = () => {
+      axios
+        .get("http://localhost:3000/animes")
+        .then(
+          (res) => (
+            (animes.value = res.data)
+          )
+        )
+    }
+
+    fetchAnimes()
+
     return { animes };
   },
   components: {
@@ -32,7 +47,7 @@ export default {
   max-width: 70vw;
   /* background-color: #d1f30d; */
   color: white;
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 10vh;
   display: flex;
   flex-direction: row;

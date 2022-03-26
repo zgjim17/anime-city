@@ -47,7 +47,7 @@
             <td class="animeNeList" style="width: 15%">
               <img
                 id="animeRowPicture"
-                :src="require('@/assets/covers/' + anime.name + '.jpg')"
+                :src="anime.poster"
                 alt=""
               />
             </td>

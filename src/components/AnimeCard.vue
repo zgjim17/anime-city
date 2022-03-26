@@ -1,7 +1,7 @@
 <template>
   <div class="profili">
     <a @click="this.$router.push('/anime/' + anime.id)">
-      <img :src="require('@/assets/covers/' + anime.name + '.jpg')" alt="d" />
+      <img :src="anime.poster" alt="d" />
 
       <p style="max-length: 3">
         {{ anime.name }}

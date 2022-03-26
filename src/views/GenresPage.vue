@@ -25,7 +25,7 @@
       style="padding-top: 1vw"
       v-for="anime in animes
         .sort((a, b) => b.year - a.year)
-        .filter((a) => a.genre.some((a) => a == genreSelected))"
+        .filter((a) => a.genres.some((a) => a == genreSelected))"
       :key="anime"
     >
       <AnimeCard
@@ -41,9 +41,10 @@
 
 <script>
 import AnimeCard from "../components/AnimeCard.vue";
-import { loadAnimes } from "./firebase";
+// import { loadAnimes } from "./firebase";
 import { loadGenres } from "./firebase";
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import axios from 'axios';
 import { useRoute } from "vue-router";
 
 export default {
@@ -51,7 +52,21 @@ export default {
     const route = useRoute();
     const genreSelected = computed(() => route.params.id);
 
-    let animes = loadAnimes();
+    const animes = ref(null)
+
+    const fetchAnimes = () => {
+      axios
+        .get("http://localhost:3000/animes")
+        .then(
+          (res) => (
+            (animes.value = res.data)
+          )
+        )
+    }
+
+    fetchAnimes()
+ 
+ 
 
     let genres = loadGenres();
 
@@ -68,7 +83,7 @@ export default {
 
 .container {
   max-width: 70vw;
-  height: 100vh;
+  min-height: 100vh;
   /* margin-top: 4vh; */
 
   display: flex;

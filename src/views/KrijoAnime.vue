@@ -17,7 +17,7 @@
     <div><label>Year: </label><input type="text" v-model="form.year" /></div>
     <div>
       <label>Genre: </label><br>
-      <div v-for="genre in genres" :key="genre" style="display: inline">
+      <div v-for="genre in genres.sort((a,b)=> a.localeCompare(b))" :key="genre" style="display: inline">
         <input type="checkbox" :value="genre" v-model="genreSelected" />
         {{ genre }}
       </div>

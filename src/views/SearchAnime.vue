@@ -43,16 +43,28 @@
 </template>
 
 <script>
-import AnimeCard from "../components/AnimeCard.vue";
-import { loadAnimes } from "../views/firebase";
+import AnimeCard from "../components/AnimeCard.vue"; 
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 
 import { ref } from "vue";
+import axios from 'axios'
 
 export default {
   setup() {
-    const animes = loadAnimes();
+    const animes = ref(null)
+
+    const fetchAnimes = () => {
+      axios
+        .get("http://localhost:3000/animes")
+        .then(
+          (res) => (
+            (animes.value = res.data)
+          )
+        )
+    }
+
+    fetchAnimes()
 
     const route = useRoute();
     const searchTag = computed(() => route.params.searchTag);

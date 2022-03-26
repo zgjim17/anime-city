@@ -1,11 +1,9 @@
 <template>
   <div class="backgroundi">
-    <div v-if="anime.name" id="backImage">
-      <!-- <img style=" height: 230px; width: 230px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/640px-Manchester_United_FC_crest.svg.png" alt=""> -->
-      <img
-        :src="anime.background"
-        alt=""
-      />
+    <div v-if="anime.name" id="backImage" v-bind:style="{ backgroundImage: 'url(' + anime.background + ')' }">
+      <!-- <img style="position:absolute;" src="https://i.ibb.co/5F8ym5Z/saz.png" alt=""> -->
+      <img :src="anime.background" alt="" /> 
+      
     </div>
     <div v-if="!mobile" class="container">
       <div class="row" style="margin-top: -5vh">
@@ -17,7 +15,6 @@
             :src="anime.poster"
             alt=""
           />
-           
 
           <div class="profileGenres">
             <a
@@ -175,11 +172,21 @@ export default {
 
 #backImage {
   max-width: 75vw;
-
   margin: auto;
 
-  /* background-image: url("../assets/backgroundImages/Naruto.jpg");
-  box-shadow: inset 0px 0px 1vh 5vh #14181c; */
+  width: 75vw;
+  /* margin-bottom: 4vw; */
+
+  /* background-image: url("../assets/backgroundImages/Naruto.jpg"); */
+  /* box-shadow: inset 0px 0px 10px rgba(204, 8, 8, 0.9); */
+  box-shadow: 1px 1px 15px 20px #14181c inset;
+  background-size: 75vw; 
+   
+}
+#backImage img {
+  width: 75vw;
+  position: relative;
+  z-index: -2;
 }
 
 .fotojaanime {

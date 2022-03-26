@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="footerContainer">
     <div class="footer">
       <div class="kolonat" id="firstKolona">
         <img src="../assets/anime.svg" id="animeLogo" alt="" />
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style scoped >
-.container {
+.footerContainer {
   background-color: rgb(19, 19, 19);
   color: #fb2b4f;
   /* color: orange; */
@@ -129,7 +129,7 @@ export default {
 }
 
 @media screen and (max-width: 750px) {
-  .container {
+  .footerContainer {
     max-width: 100vw;
     padding: 0;
   }

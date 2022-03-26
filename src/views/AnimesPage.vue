@@ -11,17 +11,31 @@
         :anime="anime"
         :id="anime.id"
       />
-    </div>
+    </div> 
   </div>
 </template>
 
 <script>
 import AnimeCard from "../components/AnimeCard.vue";
-import { loadAnimes } from "../views/firebase";
+// import { loadAnimes } from "../views/firebase";
+import {ref} from 'vue';
+import axios from 'axios'
 
 export default {
   setup() {
-    const animes = loadAnimes();
+    const animes = ref(null)
+
+    const fetchAnimes = () => {
+      axios
+        .get("http://localhost:3000/animes")
+        .then(
+          (res) => (
+            (animes.value = res.data)
+          )
+        )
+    }
+
+    fetchAnimes()
 
     return { animes };
   },
@@ -37,7 +51,7 @@ export default {
   max-width: 70vw;
   /* background-color: #084a8d; */
   color: white;
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 10vh;
   display: flex;
   flex-direction: row;
