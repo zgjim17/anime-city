@@ -25,5 +25,17 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zgjim17/anime-city.git"
+  },
+  "author": "Zgjim Gagica",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zgjim17/anime-city/issues"
+  },
+  "homepage": "https://github.com/zgjim17/anime-city#readme"
 }
