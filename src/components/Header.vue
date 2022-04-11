@@ -5,7 +5,7 @@
     </div>
 
     <div class="navigation-bar" v-if="!mobile">
-      <router-link to="/">Home</router-link>
+      <router-link to="/">sHome</router-link>
       <router-link :to="{ name: 'GenresPage', params: { id: 'Adventure' } }"
         >Genres</router-link
       >
