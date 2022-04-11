@@ -304,6 +304,8 @@ img {
 
   #backImage {
     max-width: 100%;
+    background-size: 100vw;
+    width: 100vw; 
   }
 
   .profilePic {
