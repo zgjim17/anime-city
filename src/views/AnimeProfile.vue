@@ -306,6 +306,7 @@ img {
     max-width: 100%;
     background-size: 100vw;
     width: 100vw; 
+    height: 39vw;
   }
 
   .profilePic {
@@ -378,7 +379,7 @@ img {
     border-color: #fb2b4f;
     vertical-align: bottom;
     /* height: 60%; */
-    margin-top: 28vw;
+    margin-top: 30vw;
     /* margin-left: 17%; */
   }
 }
