@@ -65,7 +65,7 @@
           <img
             v-if="anime.name"
             class="fotojaanime"
-            :src="require('@/assets/covers/' + anime.name + '.jpg')"
+            :src="anime.poster"
             alt=""
           />
         </div>
@@ -100,7 +100,7 @@
 </template>
 
 <script scoped>
-// import { ref } from "vue";
+import { ref, onBeforeUnmount } from "vue";
 import animesJSON from '@/assets/animes.json'
 // import axios from 'axios'
 // import { getAnime } from "./firebase";
@@ -126,33 +126,54 @@ export default {
     console.log(anime);
     // fetchAnimeData();
 
-    return { anime };
-  },
+    const mobile = ref();
 
-  data() {
-    return {
-      //id: this.$route.params.id, menyre tjeter me e marr ID
-      mobile: false,
-    };
-  },
+    if (window.innerWidth < 750) {
+      mobile.value = true;
+    } else {
+      mobile.value = false;
+    }
 
-  methods: {
-    onResize() {
+    const onResize = () => {
       if (window.innerWidth < 750) {
-        this.mobile = true;
+        mobile.value = true;
       } else {
-        this.mobile = false;
+        mobile.value = false;
       }
-    },
+    };
+
+    window.addEventListener("resize", onResize);
+    onBeforeUnmount(() => window.removeEventListener("resize", onResize));
+
+   
+
+    return { anime , mobile};
   },
 
-  created() {
-    window.addEventListener("resize", this.onResize);
-  },
+  // data() {
+  //   return {
+  //     //id: this.$route.params.id, menyre tjeter me e marr ID
+  //     mobile: false,
+  //   };
+  // },
 
-  beforeUnmount() {
-    window.removeEventListener("resize", this.onResize);
-  },
+  // methods: {
+  //   onResize() {
+  //     if (window.innerWidth < 750) {
+  //       this.mobile = true;
+  //     } else {
+  //       this.mobile = false;
+  //     }
+  //   },
+  // },
+
+  // created() {
+  //   window.addEventListener("resize", this.onResize);
+  // },
+
+  // beforeUnmount() {
+  //   window.removeEventListener("resize", this.onResize);
+  // },
 };
 </script>
 

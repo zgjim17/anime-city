@@ -17,25 +17,11 @@
 
 <script>
 import AnimeCard from "../components/AnimeCard.vue";
-// import { loadAnimes } from "../views/firebase";
-import {ref} from 'vue';
-import axios from 'axios'
+import animesJSON from '@/assets/animes.json'
 
 export default {
   setup() {
-    const animes = ref(null)
-
-    const fetchAnimes = () => {
-      axios
-        .get("http://localhost:3000/animes")
-        .then(
-          (res) => (
-            (animes.value = res.data)
-          )
-        )
-    }
-
-    fetchAnimes()
+    const animes = animesJSON.animes;
 
     return { animes };
   },

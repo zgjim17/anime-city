@@ -48,24 +48,13 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 
 import { ref } from "vue";
-import axios from 'axios'
+import animesJSON from '@/assets/animes.json'
 
 export default {
   setup() {
-    const animes = ref(null)
+    const animes = animesJSON.animes
 
-    const fetchAnimes = () => {
-      axios
-        .get("http://localhost:3000/animes")
-        .then(
-          (res) => (
-            (animes.value = res.data)
-          )
-        )
-    }
-
-    fetchAnimes()
-
+     
     const route = useRoute();
     const searchTag = computed(() => route.params.searchTag);
 

@@ -42,9 +42,10 @@
 <script>
 import AnimeCard from "../components/AnimeCard.vue";
 // import { loadAnimes } from "./firebase";
+import animesJSON from '@/assets/animes.json'
 import { loadGenres } from "./firebase";
-import { computed, ref } from "vue";
-import axios from 'axios';
+import { computed } from "vue";
+// import axios from 'axios';
 import { useRoute } from "vue-router";
 
 export default {
@@ -52,19 +53,20 @@ export default {
     const route = useRoute();
     const genreSelected = computed(() => route.params.id);
 
-    const animes = ref(null)
+    const animes = animesJSON.animes
 
-    const fetchAnimes = () => {
-      axios
-        .get("http://localhost:3000/animes")
-        .then(
-          (res) => (
-            (animes.value = res.data)
-          )
-        )
-    }
+    // const fetchAnimes = () => {
+    //   axios
+    //     .get("http://localhost:3000/animes")
+    //     .then(
+    //       (res) => (
+    //         (animes.value = res.data)
+    //       )
+    //     )
+    // }
 
-    fetchAnimes()
+    // fetchAnimes()
+ 
  
  
 

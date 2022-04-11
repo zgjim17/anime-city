@@ -10,8 +10,8 @@
         >Genres</router-link
       >
       <router-link :to="{ name: 'AnimesPage' }">Animes</router-link>
-      <router-link :to="{ name: 'MoviesPage' }">Movies</router-link> 
-      <router-link :to="{ name: 'KrijoAnime' }">Create Anime</router-link> 
+      <router-link :to="{ name: 'MoviesPage' }">Movies</router-link>
+      <!-- <router-link :to="{ name: 'KrijoAnime' }">Create Anime</router-link>  -->
     </div>
 
     <div class="search">
@@ -77,11 +77,10 @@
     </div>
   </div>
   <router-view />
-
-   
 </template>
 
-<script> 
+<script>
+import { ref, onBeforeUnmount } from "vue";
 
 export default {
   // setup() {
@@ -90,32 +89,53 @@ export default {
   //   return { mobile };
   // },
 
-  data() {
-    return {
-      mobile: false,
+  setup() {
+    const mobile = ref();
 
-      searchTag: "",
-    };
-  },
-  methods: {
-    onResize() {
+    if (window.innerWidth < 750) {
+      mobile.value = true;
+    } else {
+      mobile.value = false;
+    }
+
+    const onResize = () => {
       if (window.innerWidth < 750) {
-        this.mobile = true;
+        mobile.value = true;
       } else {
-        this.mobile = false;
+        mobile.value = false;
       }
-    },
+    };
+
+    window.addEventListener("resize", onResize);
+    onBeforeUnmount(() => window.removeEventListener("resize", onResize));
+
+    return { mobile };
   },
 
-  created() {
-    window.addEventListener("resize", this.onResize);
-  },
+  // data() {
+  //   return {
+  //     mobile: false,
 
-  beforeUnmount() {
-    window.removeEventListener("resize", this.onResize);
-  },
+  //     searchTag: "",
+  //   };
+  // },
+  // methods: {
+  //   onResize() {
+  //     if (window.innerWidth < 750) {
+  //       this.mobile = true;
+  //     } else {
+  //       this.mobile = false;
+  //     }
+  //   },
+  // },
 
- 
+  // created() {
+  //   window.addEventListener("resize", this.onResize);
+  // },
+
+  // beforeUnmount() {
+  //   window.removeEventListener("resize", this.onResize);
+  // },
 };
 </script>
 
