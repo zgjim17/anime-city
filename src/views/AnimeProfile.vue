@@ -100,7 +100,8 @@
 </template>
 
 <script scoped>
-import { ref } from "vue";
+// import { ref } from "vue";
+import animesJSON from '@/assets/animes.json'
 // import axios from 'axios'
 // import { getAnime } from "./firebase";
 import { useRoute } from "vue-router";
@@ -110,16 +111,20 @@ export default {
     const route = useRoute();
     const id = route.params.id;
 
-    const anime = ref(null);
+    // const anime = ref(null);
 
-    const fetchAnimeData = () => {
-      fetch(`http://localhost:3000/animes/${id}`)
-        .then((res) => res.json())
-        .then((data) => (anime.value = data));
-    };
+    console.log(animesJSON)
+    const anime = animesJSON.animes.find(anime => anime.id == id)
+    console.log(animesJSON)
+
+    // const fetchAnimeData = () => {
+    //   fetch(`http://localhost:3000/animes/${id}`)
+    //     .then((res) => res.json())
+    //     .then((data) => (anime.value = data));
+    // };
 
     console.log(anime);
-    fetchAnimeData();
+    // fetchAnimeData();
 
     return { anime };
   },
