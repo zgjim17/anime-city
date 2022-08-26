@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="animet col-8" style="">
-      <h2 style="flex-basis: 100%">Browse all Animees</h2>
+      <h2 style="flex-basis: 100%">Browse all Animes</h2>
 
       <div
         style="padding-top: 1vw"
