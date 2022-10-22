@@ -87,7 +87,6 @@ export default {
 
     // fetchAnimes()
 
-     window.localStorage.setItem("totalGames", 5);
 
     const animes = animesJSON.animes
   
