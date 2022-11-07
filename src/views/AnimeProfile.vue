@@ -38,7 +38,7 @@
         >
           <div>
             <p class="profileName">
-              {{ anime.name }}
+              {{ anime.name }} - 
             </p>
             <p class="profileYear">
               {{ anime.year }}
